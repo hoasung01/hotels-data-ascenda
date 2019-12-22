@@ -1,6 +1,6 @@
 class HotelsController < ApplicationController
   def index
-    hotels = Hotels::ParserDataService.new().()
-    render json: hotels
+    response = Hotels::ParserDataService.new().()
+    render json: response.hotels
   end
 end
