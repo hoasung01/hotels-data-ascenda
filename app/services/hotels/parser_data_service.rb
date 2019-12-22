@@ -11,8 +11,8 @@ module Hotels
         response = FetchDataService.new(supplier_url: value).()
         if response.error.blank?
           response.hotels.each do |payload|
-            categorized_response = CategorizedDataService.new(supplier: key, payload: payload).()
-            @hotels << categorized_response.hotel
+            categorized_data_response = CategorizedDataService.new(supplier: key, payload: payload).()
+            @hotels << categorized_data_response.hotel
           end
         end
       end
