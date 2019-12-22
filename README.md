@@ -10,7 +10,7 @@
 * [Technologies](#technologies)
 * [Setup](#setup)
 * [Features](#features)
-* [Status](#test)
+* [Status](#status)
 * [Contact](#contact)
 
 ## Technologies
