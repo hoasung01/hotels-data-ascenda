@@ -11,17 +11,8 @@ module Hotels
         response = FetchDataService.new(supplier_url: value).()
         if response.error.blank?
           response.hotels.each do |payload|
-            case key
-            when :bear
-              hotel = Hotel.new(payload['Id'], payload['DestinationId'], payload['Name'], payload['Description'])
-              @hotels << hotel
-            when :fish
-              hotel = Hotel.new(payload['hotel_id'], payload['destination_id'], payload['hotel_name'], payload['details'])
-              @hotels << hotel
-            when :dragon
-              hotel = Hotel.new(payload['id'], payload['destination'], payload['name'], payload['info'])
-              @hotels << hotel
-            end
+            categorized_response = CategorizedDataService.new(supplier: key, payload: payload).()
+            @hotels << categorized_response.hotel
           end
         end
       end
