@@ -1,21 +1,33 @@
 module Hotels
   class ParserDataService
+    attr_reader :hotels
+
     def initialize
+      @hotels = []
     end
 
     def call
-      hotels = []
       SuppliersConstant::SUPPLIERS.each do |key, value|
         response = FetchDataService.new(supplier_url: value).()
-        debugger
-        unless response.error.blank?
-          response.each do |payload|
-            categorized_data = CategorizedDataService.new(supplier: key, payload: payload).()
-            hotels << categorized_data
+        if response.error.blank?
+          response.hotels.each do |payload|
+            case key
+            when :bear
+              hotel = HotelStruct.new(payload['Id'], payload['DestinationId'], payload['Name'], payload['Description'])
+              @hotels << hotel
+            when :fish
+              hotel = HotelStruct.new(payload['hotel_id'], payload['destination_id'], payload['hotel_name'], payload['details'])
+              @hotels << hotel
+            when :dragon
+              hotel = HotelStruct.new(payload['id'], payload['destination'], payload['name'], payload['info'])
+              @hotels << hotel
+            end
           end
         end
       end
-      hotels
+      self
     end
   end
+
+  HotelStruct = Struct.new(:id, :destination_id, :name, :description)
 end

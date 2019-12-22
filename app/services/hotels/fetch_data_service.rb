@@ -1,6 +1,6 @@
 module Hotels
   class FetchDataService
-    attr_reader :response, :error
+    attr_reader :hotels, :error
     TIMEOUT = 10
 
     def initialize(supplier_url:)
@@ -9,12 +9,12 @@ module Hotels
 
     def call
       begin
-        @response = RestClient::Request.execute(
+        response = RestClient::Request.execute(
           method: :get,
           url: @supplier_url,
           timeout: TIMEOUT
         )
-        JSON.parse(@response.body)
+        @hotels = JSON.parse(response.body)
       rescue RestClient::ExceptionWithResponse => e
         Rails.logger.error("===Can not get data from #{@supplier_url} due to: #{e}===")
         @error = e
