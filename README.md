@@ -23,13 +23,10 @@ Describe how to install / setup your local environement / add link to demo versi
 ## Features
 List of features
 
-```html
-  - Assume that we are running on localhost:3000
-```
 * Get a list of hotels: As an user, I want to get a list of hotels
 
 ```html
-  http://localhost:3000/hotels
+  https://hotels-sg-data-ascenda.herokuapp.com/hotels
 ```
 * Get a list of hotels by hotel ids and destiation id: As an user, I want to filter a
   list of hotels in either option:
@@ -38,7 +35,7 @@ List of features
   - hotels: based on a list of hotel IDs given
   - destination: based on a given destination ID
 
-  http://localhost:3000/hotels?hotel_ids=iJhz,SjyX?dest_id=5432
+  https://hotels-sg-data-ascenda.herokuapp.com/hotels?hotel_ids=iJhz,SjyX?dest_id=5432
 ```
 
 ## Status
