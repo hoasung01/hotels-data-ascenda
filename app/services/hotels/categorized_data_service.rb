@@ -14,7 +14,6 @@ module Hotels
           hotel.id = @payload['Id']
           hotel.destination_id = @payload['DestinationId']
           hotel.name = @payload['Name']
-          hotel.description = @payload['Description']
           hotel.location = {
             lat: @payload['Latitude'],
             lng: @payload['Longitude'],
@@ -22,13 +21,23 @@ module Hotels
             city: @payload['City'],
             country: @payload['Country']
           }
+          hotel.description = @payload['Description']
+          hotel.amenities = {
+            general: @payload['Facilities'],
+            room: []
+          }
+          hotel.images = {
+            rooms: [],
+            site: [],
+            amenities: []
+          }
+          hotel.booking_conditions = []
         end.marshal_dump
       when :fish
         @hotel = Hotel.new.tap do |hotel|
           hotel.id = @payload['hotel_id']
           hotel.destination_id = @payload['destination_id']
           hotel.name = @payload['hotel_name']
-          hotel.description = @payload['details']
           hotel.location = {
             lat: '',
             lng: '',
@@ -36,13 +45,23 @@ module Hotels
             city: '',
             country: @payload['location']['country']
           }
+          hotel.description = @payload['details']
+          hotel.amenities = {
+            general: @payload['amenities']['general'],
+            room: @payload['amenities']['room']
+          }
+          hotel.images = {
+            rooms: @payload['images']['rooms'],
+            site: @payload['images']['site'],
+            amenities: []
+          }
+          hotel.booking_conditions = @payload['booking_conditions']
         end.marshal_dump
       when :dragon
         @hotel = Hotel.new.tap do |hotel|
           hotel.id = @payload['id']
           hotel.destination_id = @payload['destination']
           hotel.name = @payload['name']
-          hotel.description = @payload['info']
           hotel.location = {
             lat: @payload['lat'],
             lng: @payload['lng'],
@@ -50,6 +69,17 @@ module Hotels
             city: '',
             country: ''
           }
+          hotel.description = @payload['info']
+          hotel.amenities = {
+            general: @payload['amenities'],
+            room: []
+          }
+          hotel.images = {
+            rooms: @payload['images']['rooms'],
+            site: [],
+            amenities: @payload['images']['amenities']
+          }
+          hotel.booking_conditions = []
         end.marshal_dump
       end
       self
