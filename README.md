@@ -31,15 +31,15 @@ List of features
 ```html
   http://localhost:3000/hotels
 ```
-
 * Get a list of hotels by hotel ids and destiation id: As an user, I want to filter a
   list of hotels in either option:
 
-  ```html
-    - hotels: based on a list of hotel IDs given
-    - destination: based on a given destination ID
-    http://localhost:3000/hotels?hotel_ids=iJhz,SjyX?dest_id=5432
-  ```
+```html
+  - hotels: based on a list of hotel IDs given
+  - destination: based on a given destination ID
+
+  http://localhost:3000/hotels?hotel_ids=iJhz,SjyX?dest_id=5432
+```
 
 ## Status
 Project is: _finished_
