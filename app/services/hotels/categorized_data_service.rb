@@ -17,13 +17,13 @@ module Hotels
           hotel.location = {
             lat: @payload['Latitude'],
             lng: @payload['Longitude'],
-            address: @payload['Address'],
+            address: sanitize(@payload['Address']),
             city: @payload['City'],
             country: @payload['Country']
           }
-          hotel.description = @payload['Description']
+          hotel.description = sanitize(@payload['Description'])
           hotel.amenities = {
-            general: @payload['Facilities'],
+            general: sanitize(@payload['Facilities']),
             room: []
           }
           hotel.images = {
@@ -83,6 +83,16 @@ module Hotels
         end.marshal_dump
       end
       self
+    end
+
+    private
+
+    def sanitize(data)
+      if data.is_a?(Array)
+        data.map{ |text| text.strip }
+      else
+        data.strip
+      end
     end
   end
 end
