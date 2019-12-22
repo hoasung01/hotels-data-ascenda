@@ -1,7 +1,2 @@
-class Hotel < Struct.new(
-    :id,
-    :destination_id,
-    :name,
-    :description
-  )
+class Hotel < OpenStruct
 end
