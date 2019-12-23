@@ -1,12 +1,10 @@
 language: ruby
 rvm:
-  — 2.4.9
+  - 2.5.0
+  - 2.4.9
 services:
   - postgresql
 addons:
   postgresql: '9.6'
-before_script:
-  - cp config/database.yml.travis config/database.yml
 script:
-  - bundle exec rails db:reset db:setup db:migrate RAILS_ENV=test
-  - rails test -v
+  - bundle exec rails test -v
