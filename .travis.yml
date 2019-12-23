@@ -3,10 +3,12 @@ rvm:
   — 2.4.9
 services:
   - postgresql
+before_install:
+  - gem install bundler
 addons:
   postgresql: '9.6'
 before_script:
-  - cp config/database.yml.travis config/database.yml
+  - psql -c 'create database hotels_ascenda_test;' -U postgres
 script:
   - bundle exec rails db:reset db:setup db:migrate RAILS_ENV=test
   - rails test -v
