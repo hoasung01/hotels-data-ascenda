@@ -12,7 +12,13 @@ module Hotels
         if response.error.blank?
           response.hotels.each do |payload|
             categorized_data_response = CategorizedDataService.new(supplier: key, payload: payload).()
-            @hotels << categorized_data_response.hotel
+
+            combine_data_response = CombineDataService.new(
+              combined_hotels: @hotels,
+              hotel: categorized_data_response.hotel
+            ).()
+
+            @hotels = combine_data_response.combined_hotels
           end
         end
       end
