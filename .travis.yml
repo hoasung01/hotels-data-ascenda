@@ -4,7 +4,6 @@ rvm:
 services:
   - postgresql
 before_install:
-  - gem install bundler
   - gem install rails -v '5.2.3'
 addons:
   postgresql: '9.6'
