@@ -2,20 +2,18 @@ require 'test_helper'
 
 module Hotels
   class FetchDataServiceTest < ActiveSupport::TestCase
-    def bear_url
-      @bear_url ||= SuppliersConstant::SUPPLIERS[:bear]
-    end
+    BEAR_URL = SuppliersConstant::SUPPLIERS[:bear]
 
     def test_call_service_succeed
       @body ||= File.read(File.join(Rails.root, 'test', 'fixtures', 'bear.json'))
 
-      stub_request(:any, bear_url).
+      stub_request(:any, BEAR_URL).
         to_return(
           body: @body
         )
 
       response = FetchDataService.new(
-        supplier_url: bear_url
+        supplier_url: BEAR_URL
       ).()
 
       assert_nil(response.error)
@@ -23,10 +21,10 @@ module Hotels
     end
 
     def test_call_service_failure
-      stub_request(:any, bear_url).to_timeout
+      stub_request(:any, BEAR_URL).to_timeout
 
       response = FetchDataService.new(
-        supplier_url: bear_url
+        supplier_url: BEAR_URL
       ).()
 
       assert_nil(response.hotels)
