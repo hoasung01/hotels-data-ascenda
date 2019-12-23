@@ -5,10 +5,8 @@ services:
   - postgresql
 before_install:
   - gem install bundler
+  - gem install rails -v '5.2.3'
 addons:
   postgresql: '9.6'
-before_script:
-  - psql -c 'create database hotels_ascenda_test;' -U postgres
 script:
-  - bundle exec rails db:reset db:setup db:migrate RAILS_ENV=test
   - rails test -v
