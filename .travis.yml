@@ -1,11 +1,10 @@
 language: ruby
 rvm:
   — 2.5.0
+  - 2.4.9
 services:
   - postgresql
-before_install:
-  - gem install rails -v '5.2.3'
 addons:
   postgresql: '9.6'
 script:
-  - rails test -v
+  - bundle exec rails test -v
