@@ -10,7 +10,6 @@ before_script:
 sudo: false
 rvm:
   - 2.4.9
-  - ruby-head
 script:
   - bundle exec rails test
 addons:
