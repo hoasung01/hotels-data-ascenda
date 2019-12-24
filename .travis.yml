@@ -1,8 +1,14 @@
 language: ruby
+cache:
+  bundler: true
+  directories:
+    - vendor/cache
 rvm:
   - 2.5.0
   - 2.4.9
+  - ruby-head
 cache: bundler
-before_install:
-  - travis_retry gem install bundler --pre
-install: gem install rails
+bundler_args: --jobs=3 --retry=3 --without development
+script:
+  - bundle exec rails test
+
