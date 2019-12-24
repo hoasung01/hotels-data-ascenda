@@ -1,8 +1,6 @@
 language: ruby
 cache:
   bundler: true
-  directories:
-    - vendor/cache
 before_install:
   - gem install bundler
 sudo: false
