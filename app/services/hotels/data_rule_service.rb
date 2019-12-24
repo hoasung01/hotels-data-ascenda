@@ -6,7 +6,6 @@ module Hotels
     end
 
     def call
-      # TODO: refactor
       if @dest[:location][:lat].blank?
         @dest[:location][:lat] = @src[:location][:lat]
       end
