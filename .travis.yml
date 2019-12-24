@@ -1,10 +1,17 @@
 language: ruby
-rvm:
-  - 2.5.0
-  - 2.4.9
+cache:
+  bundler: true
 services:
   - postgresql
-addons:
-  postgresql: '9.6'
+before_install:
+  - gem install bundler
+before_script:
+  - psql -c 'create database hotels_ascenda_test;' -U postgres
+sudo: false
+rvm:
+  - 2.4.9
+  - ruby-head
 script:
-  - bundle exec rails test -v
+  - bundle exec rails test
+addons:
+  postgresql: "9.6"
