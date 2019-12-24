@@ -19,7 +19,7 @@ module Hotels
           value.keys.each do |nested_key|
             if value[nested_key].is_a?(String)
               if @dest[key][nested_key].blank?
-                @dest[key][nested_key] = @src[key][nested_key
+                @dest[key][nested_key] = @src[key][nested_key]
               end
             elsif value[nested_key].is_a?(Array)
               if @dest[key][nested_key].empty?
