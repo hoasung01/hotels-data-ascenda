@@ -1,5 +1,6 @@
 language: ruby
 rvm:
   - 2.4.9
+install: gem install rails
 script:
   - rails test -v
