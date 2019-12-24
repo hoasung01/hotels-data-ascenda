@@ -2,6 +2,8 @@ language: ruby
 rvm:
   - 2.5.0
   - 2.4.9
+before_install:
+  - gem install bundler
 install: gem install rails
 script:
   - bundle exec rails test -v
