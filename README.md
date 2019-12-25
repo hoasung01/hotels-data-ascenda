@@ -8,17 +8,14 @@
 
 ## Table of contents
 * [Technologies](#technologies)
-* [Setup](#setup)
 * [Features](#features)
+* [MiniTest](#minitest)
 * [Status](#status)
 * [Contact](#contact)
 
 ## Technologies
 * Ruby - version 2.3.1
 * Rails - version 5.2.3
-
-## Setup
-Describe how to install / setup your local environement / add link to demo version.
 
 ## Features
 List of features
@@ -28,6 +25,7 @@ List of features
 ```html
   https://hotels-sg-data-ascenda.herokuapp.com/hotels
 ```
+
 * Get a list of hotels by hotel ids and destiation id: As an user, I want to filter a
   list of hotels in either option:
 
@@ -36,6 +34,14 @@ List of features
   - destination: based on a given destination ID
 
   https://hotels-sg-data-ascenda.herokuapp.com/hotels?hotel_ids=iJhz,SjyX?dest_id=5432
+```
+
+## MiniTest
+
+* Run a test
+
+```html
+ rails test -v
 ```
 
 ## Status
